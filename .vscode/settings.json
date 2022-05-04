@@ -5,6 +5,11 @@
         "vector": "cpp",
         "xstring": "cpp",
         "xutility": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "type_traits": "cpp",
+        "ios": "cpp",
+        "cmath": "cpp"
     }
 }
