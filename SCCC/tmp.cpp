@@ -1,28 +1,79 @@
-// b2417_SY
-
-#include <iostream>
+/**
+#include <bits/stdc++.h>
 using namespace std;
+int lastBulb;  //이어지는 전구의 색깔
 
-int binarySearch(long long low, long long high, long long target)
-{
-    long long mid = (low + high) / 2;
-    if (mid * mid >= target)
-    {
-        cout << mid << "\n";
-        if (mid * mid - target < 1)
-            return mid;
-        else
-            return binarySearch(low, mid - 1, target);
+int count(vector<int> vec) {
+    int count = 0;
+    for(int i = 0; i < vec.size(); i++) {
+        if (lastBulb != vec[i]) {
+            count++;
+            lastBulb = vec[i];
+        }
     }
-    else
-        return binarySearch(mid + 1, high, target);
+    lastBulb = vec.back();  //마지막 원소
+    return count;
 }
 
-int main()
-{
-    long long n;
+// 2차원 벡터로 만들기 위해 string 형태를 vector<int> 로 변환함
+vector<int> StringToVectorInt (string str) {
+    vector<int> vec;
+    int num;
+    stringstream iss(str);
+    
+    while (iss >> num)
+        vec.push_back(num);
+        
+    return vec;
+}
+
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    vector<int> resultArr;
+    int n;
+    string tmp;
+    vector<vector<int>> vec;
+
     cin >> n;
-    // cout << (long long)ceil(sqrt(n));  -> 부동소수점 오차 때문에 틀림
-    cout << binarySearch(1, n / 2, n);
+    for (int i = 0; i < n; i ++) {
+        cin >> tmp;
+        vec.push_back(StringToVectorInt(tmp));
+    }
+    
+    lastBulb = vec[0][0];
+    sort(vec.begin(), vec.end());
+
+    do {
+        int sum = 0;
+        for (int i = 0; i < vec.size(); i++) {
+            sum += count(vec[i]);
+        }
+        resultArr.push_back(sum);
+
+    } while (next_permutation(vec.begin(), vec.end()));
+    
+    cout << *min_element(resultArr.begin(), resultArr.end());
+
     return 0;
+}
+*/
+/**
+ * 
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    string str = "123";
+    for (int i =0; i<str.size(); i++) {
+        if (str[i].compare("1"))
+            cout << str[i] << " ";
+    }
+}
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    vector<int> v = { 1, 2, 3, 4, 5 };
+    cout << accumulate(0, 2, 0);
+    return
 }
