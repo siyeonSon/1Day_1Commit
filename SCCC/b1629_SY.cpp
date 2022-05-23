@@ -1,3 +1,4 @@
+//분할정복법(Divide And conquer)
 #include <bits/stdc++.h>
 using namespace std;
 
