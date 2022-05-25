@@ -1,4 +1,5 @@
 //분할정복법(Divide And conquer)
+//정확히 이해X
 #include <bits/stdc++.h>
 using namespace std;
 
