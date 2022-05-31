@@ -3,12 +3,23 @@ using namespace std;
 
 int Solve(int m, vector<int> array) {
     int answer = 0;
-    queue<int> que;
+    int sum = 0;
 
     for (int i = 0; i < array.size(); i++) {
-        for (int j = i+1; j < array.size(); j++) {
-
+        for (int j = i; j < array.size(); j++) {
+            if (sum < m) {
+                sum += array[j];
+            }
+            else if (sum > m) {
+                break;
+            }
+            if (sum == m) {
+                answer++; 
+                break; 
+            }
+            
         }
+        sum = 0;
     }
     return answer;
 }
