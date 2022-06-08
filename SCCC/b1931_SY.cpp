@@ -1,17 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int Solve(vector<int> vec) {
+int Solve(vector<pair<int, int>> meeting) {
     int answer = 0;
-    vector<bool> check(*max_element(vec.begin(), vec.end()) + 1);
-    vector<int> time(vec.size()/2);
+    //end time 을 기준으로 정렬
+    sort(meeting.begin(), meeting.end());
 
-    for (int i = 0; i < time.size(); i++) {
-        time[i] = vec[2*i+1] - vec[2*i];
-        cout << time[i] << " ";
+    int time = 0;
+    for (int i = 0; i < meeting.size(); i++) {
+        if (meeting[i].second >= time) {
+            time = meeting[i].first;
+            answer++;
+        }
     }
-    
-    
     
     return answer;
 }
@@ -20,11 +21,11 @@ int Solve(vector<int> vec) {
 int main() {
     int n;
     cin >> n;
-    vector<int> vec(n*2);
+    vector<pair<int, int>> meeting(n);
     for (int i = 0; i < n; i++) 
-        cin >> vec[2*i] >> vec[2*i+1];
+        cin >> meeting[i].second >> meeting[i].first;  //<end time, start time>
 
-    cout << Solve(vec);
+    cout << Solve(meeting);
 
     return 0;
 }
